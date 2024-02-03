@@ -2,7 +2,7 @@
 title Simple Anti-Virus
 
 REM Specify the directory to scan
-set "directory=C:\Users\alber\OneDrive\Desktop"
+set "directory=C:\Users\OneDrive\Desktop"
 
 REM Create a quarantine directory if it doesn't exist
 if not exist "C:\Quarantine" mkdir "C:\Quarantine"
