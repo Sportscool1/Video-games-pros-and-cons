@@ -1,91 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Anti-Virus - Protect Your PC</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f1f1f1;
-    color: #333;
-  }
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
-  }
-  h1 {
-    text-align: center;
-    color: #555;
-  }
-  p {
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
-  .download-btn {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 10px;
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  .download-btn:hover {
-    background-color: #45a049;
-  }
-  .scrolling-news {
-    overflow: hidden;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-  }
-  .news-container {
-    animation: scroll-left 20s linear infinite;
-  }
-  @keyframes scroll-left {
-    0%   { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bat Antivirus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #04040d;
+            color: #fff;
+        }
+        header {
+            background-image: url('space_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .typed-content {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            margin: 0;
+            padding: 0;
+            animation: typing 3s steps(30, end);
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #fff;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 200px;
+        }
+        p {
+            text-align: center;
+            color: #ccc;
+            margin-top: 20px;
+        }
+        .download-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+        .features {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .feature {
+            width: 30%;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #333;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .feature h3 {
+            color: #fff;
+        }
+        .promo-video {
+            width: 100%;
+            margin-top: 40px;
+        }
+        @media (max-width: 600px) {
+            .feature {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <img class="logo" src="bat_logo.png" alt="Bat Antivirus Logo">
+        <div class="typing-text">
+            <h1 class="typed-content"></h1>
+        </div>
+    </header>
 
-<div class="container">
-  <h1>Simple Anti-Virus</h1>
-  <p>Protect your PC with our simple and effective anti-virus program. Scan and remove malicious files with ease.</p>
-  <p>Features:</p>
-  <ul>
-    <li>Signature-based detection</li>
-    <li>Heuristic analysis</li>
-    <li>Real-time protection</li>
-    <li>User-friendly interface</li>
-    <li>Regular updates</li>
-  </ul>
-  <p>Download now and secure your computer:</p>
-  <a href="bat antivirus.bat" class="download-btn" download>Download Now</a>
-</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            typeText("Bat Antivirus", document.querySelector(".typed-content"));
+        });
 
-<div class="scrolling-news">
-  <div class="news-container">
-    <p>Simple Anti-Virus awarded Best Security Software of the Year!</p>
-    <p>New update available! Download now for enhanced protection.</p>
-    <p>Join our community forum to share tips and discuss security topics.</p>
-  </div>
-</div>
+        function typeText(text, element) {
+            let index = 0;
+            const intervalId = setInterval(function() {
+                if (index < text.length) {
+                    element.textContent += text.charAt(index);
+                    index++;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 100);
+        }
+    </script>
 
+    <div class="container">
+        <p>Your trusted partner in cybersecurity.</p>
+        <p>Protecting your devices from malware, viruses, and cyber threats.</p>
+        <a href="#download" class="download-btn">Download Now</a>
+    </div>
+
+    <div id="download" class="container">
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>Real-time Protection</h3>
+                <p>Stay protected from threats in real-time.</p>
+            </div>
+            <div class="feature">
+                <h3>Advanced Firewall</h3>
+                <p>Block unauthorized access and keep your data safe.</p>
+            </div>
+            <div class="feature">
+                <h3>Automatic Updates</h3>
+                <p>Always have the latest protection against new threats.</p>
+            </div>
+            <div class="feature">
+                <h3>Secure Online Browsing</h3>
+                <p>Browse the web safely with our secure browsing feature.</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Support</h3>
+                <p>Get help whenever you need it with our round-the-clock support.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>See Bat Antivirus in Action</h2>
+        <video class="promo-video" controls autoplay loop>
+            <source src="antivirus_promo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 </body>
 </html>
