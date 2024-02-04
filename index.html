@@ -146,24 +146,18 @@
             );
         }
 
-        // Function to start typing animation when the section is in viewport
-        function startTypingAnimation(element, text) {
-            if (isInViewport(element)) {
-                typeText(text, element);
+        // Function to start typing animation when the videos section is in viewport
+        function startTypingAnimation() {
+            const secondTypedContent = document.querySelector(".typed-content-second");
+            if (isInViewport(secondTypedContent)) {
+                typeText("Take a Sneak Peek at the New Bat Antivirus", secondTypedContent);
                 // Remove the scroll event listener after the animation starts
                 window.removeEventListener('scroll', startTypingAnimation);
             }
         }
 
-        // Get elements for typing animation
-        const firstTypedContent = document.querySelector(".typed-content");
-        const secondTypedContent = document.querySelector(".typed-content-second");
-
-        // Listen for scroll events to start typing animation for both sections
-        window.addEventListener('scroll', function() {
-            startTypingAnimation(firstTypedContent, "Bat Antivirus");
-            startTypingAnimation(secondTypedContent, "Take a Sneak Peek at the New Bat Antivirus");
-        });
+        // Listen for scroll events to start typing animation
+        window.addEventListener('scroll', startTypingAnimation);
     </script>
 
     <div class="container">
