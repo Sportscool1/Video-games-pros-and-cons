@@ -121,7 +121,6 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             typeText("Bat Antivirus", document.querySelector(".typed-content"));
-            typeText("Take a Sneak Peek at the New Bat Antivirus", document.querySelector(".typed-content-second"));
         });
 
         function typeText(text, element) {
@@ -135,6 +134,36 @@
                 }
             }, 100);
         }
+
+        // Function to check if an element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to start typing animation when the section is in viewport
+        function startTypingAnimation(element, text) {
+            if (isInViewport(element)) {
+                typeText(text, element);
+                // Remove the scroll event listener after the animation starts
+                window.removeEventListener('scroll', startTypingAnimation);
+            }
+        }
+
+        // Get elements for typing animation
+        const firstTypedContent = document.querySelector(".typed-content");
+        const secondTypedContent = document.querySelector(".typed-content-second");
+
+        // Listen for scroll events to start typing animation for both sections
+        window.addEventListener('scroll', function() {
+            startTypingAnimation(firstTypedContent, "Bat Antivirus");
+            startTypingAnimation(secondTypedContent, "Take a Sneak Peek at the New Bat Antivirus");
+        });
     </script>
 
     <div class="container">
