@@ -169,6 +169,23 @@
             </div>
         </div>
     </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            typeText("Take a sneak peek on how our prototypes are", document.querySelector(".typed-content"));
+        });
+
+        function typeText(text, element) {
+            let index = 0;
+            const intervalId = setInterval(function() {
+                if (index < text.length) {
+                    element.textContent += text.charAt(index);
+                    index++;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 100);
+        }
+    </script>
 
     <div class="container">
         <h2>See Bat Antivirus CMD Windows in Action</h2>
